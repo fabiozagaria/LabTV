@@ -1,6 +1,22 @@
 @let selectedMovie = movie();
 
-@if (selectedMovie) {
+@if (isLoading()) {
+  <p class="text-center py-5">Caricamento film...</p>
+} @else if (errorMessage()) {
+  <main class="py-5">
+    <div class="container">
+      <div class="alert alert-danger text-center">
+        {{ errorMessage() }}
+      </div>
+
+      <div class="text-center">
+        <a routerLink="/catalogo" class="btn btn-outline-dark">
+          Torna al catalogo
+        </a>
+      </div>
+    </div>
+  </main>
+} @else if (selectedMovie) {
   <main class="py-5">
     <div class="container">
       <a routerLink="/catalogo" class="btn btn-outline-dark mb-4">
@@ -10,7 +26,7 @@
       <div class="row g-4 align-items-start">
         <div class="col-md-4">
           <img
-            [src]="selectedMovie.poster"
+            [src]="selectedMovie.poster_path ? baseImageUrl + selectedMovie.poster_path : 'assets/images/labtv-logo.png'"
             [alt]="selectedMovie.title"
             class="img-fluid rounded shadow-sm">
         </div>
@@ -26,28 +42,63 @@
 
           <div class="d-flex flex-wrap gap-2 mb-4">
             <span class="badge bg-warning text-dark">
-              Voto {{ selectedMovie.voteAverage }}
+              Voto {{ selectedMovie.vote_average }}
             </span>
-            <span class="badge bg-dark">
-              {{ selectedMovie.genre }}
-            </span>
-            <span class="badge bg-secondary">
-              {{ selectedMovie.language }}
-            </span>
+            @for (genre of selectedMovie.genres ?? []; track genre.id) {
+              <span class="badge bg-dark">
+                {{ genre.name }}
+              </span>
+            }
           </div>
 
           <ul class="list-group list-group-flush">
             <li class="list-group-item px-0">
-              <strong>Data uscita:</strong> {{ selectedMovie.releaseDate }}
+              <strong>Data uscita:</strong> {{ selectedMovie.release_date }}
             </li>
-            <li class="list-group-item px-0">
-              <strong>Durata:</strong> {{ selectedMovie.duration }} min
-            </li>
+            @if (selectedMovie.runtime) {
+              <li class="list-group-item px-0">
+                <strong>Durata:</strong> {{ selectedMovie.runtime }} min
+              </li>
+            }
+            @if (director()) {
+              <li class="list-group-item px-0">
+                <strong>Regista:</strong> {{ director()?.name }}
+              </li>
+            }
           </ul>
         </div>
       </div>
+
+      @if (cast().length) {
+        <section class="mt-5">
+          <h2 class="h4 fw-bold mb-3">Cast principale</h2>
+
+          <div class="row g-3">
+            @for (actor of cast(); track actor.id) {
+              <div class="col-sm-6 col-lg-4">
+                <div class="border rounded p-3 h-100">
+                  <h3 class="h6 mb-1">{{ actor.name }}</h3>
+                  <p class="text-secondary mb-0">{{ actor.character }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      @if (similarMovies().length) {
+        <section class="mt-5">
+          <h2 class="h4 fw-bold mb-3">Film simili</h2>
+
+          <div class="row g-4">
+            @for (movie of similarMovies(); track movie.id) {
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                <app-movie-card [movie]="movie"></app-movie-card>
+              </div>
+            }
+          </div>
+        </section>
+      }
     </div>
   </main>
-} @else {
-  <p class="text-center py-5">Caricamento film...</p>
 }

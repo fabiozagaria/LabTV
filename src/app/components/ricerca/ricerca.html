@@ -1,1 +1,62 @@
-<p>ricerca works!</p>
+<main class="py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">Cerca film</h1>
+
+      <p class="text-secondary">
+        Cerca un film nel catalogo LabTV.
+      </p>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+
+      <div class="col-md-8 col-lg-6">
+
+        <div class="input-group input-group-lg shadow-sm">
+          <span class="input-group-text bg-dark text-light">
+            🔍
+          </span>
+
+          <input
+            [ngModel]="inputFilmSearch()"
+            (ngModelChange)="updateInput($event)"
+            type="text"
+            class="form-control"
+            placeholder="Cerca per titolo..."
+            aria-label="Cerca film">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="mb-4">
+      <h2 class="h4 fw-bold">Risultati</h2>
+
+      <p class="text-secondary">
+        Film trovati nel catalogo.
+      </p>
+    </div>
+
+    @if (isLoading()) {
+      <p class="text-center">Caricamento film...</p>
+    } @else if (errorMessage()) {
+      <div class="alert alert-danger text-center">
+        {{ errorMessage() }}
+      </div>
+    } @else {
+      <div class="row g-4">
+        @for (movie of filteredMovies(); track movie.id) {
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <app-movie-card [movie]="movie"></app-movie-card>
+          </div>
+        } @empty {
+          <p class="text-center">Nessun film trovato.</p>
+        }
+      </div>
+    }
+
+  </div>
+
+</main>

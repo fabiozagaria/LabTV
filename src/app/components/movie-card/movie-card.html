@@ -4,7 +4,7 @@
         <div class="card h-100 shadow-sm">
 
           <img
-            [src]="mv.poster"
+            [src]="mv.poster_path ? baseImageUrl + mv.poster_path : 'assets/images/labtv-logo.png'"
             class="card-img-top"
             [alt]="mv.title">
 
@@ -21,13 +21,13 @@
             <div class="mt-auto">
 
               <span class="badge bg-warning text-dark">
-                {{mv.voteAverage}}
+                {{mv.vote_average}}
               </span>
 
             
 
               <p class="mb-3">
-                <strong>Anno:</strong> {{mv.releaseDate}}
+                <strong>Anno:</strong> {{mv.release_date}}
               </p>
 
               <a

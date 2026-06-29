@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class MovieCard {
 
+  protected readonly baseImageUrl = 'https://image.tmdb.org/t/p/w500';
   movie = input.required<Movie>();
   
 }

@@ -1,8 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MovieService } from '../../services/movie-service';
-import { Movie } from '../../../models/movie'; 
-import { OnInit } from '@angular/core';
-import { MovieCard } from "../movie-card/movie-card";
+import { Movie } from '../../../models/movie';
+import { MovieCard } from '../movie-card/movie-card';
 
 @Component({
   selector: 'app-catalogo',
@@ -15,7 +14,7 @@ export class Catalogo implements OnInit {
   protected isLoading = signal(true);
   protected errorMessage = signal('');
 
-  constructor(private movieService: MovieService) {};
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.movieService.getMovies().subscribe({
@@ -27,6 +26,6 @@ export class Catalogo implements OnInit {
         this.errorMessage.set('Non riesco a caricare i film.');
         this.isLoading.set(false);
       }
-    })
+    });
   }
 }
