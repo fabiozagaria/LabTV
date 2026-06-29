@@ -1,0 +1,64 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Inception",
+      "overview": "Un ladro specializzato nell'entrare nei sogni riceve una missione impossibile.",
+      "poster": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
+      "releaseDate": "2010-07-16",
+      "voteAverage": 8.8,
+      "genre": "Fantascienza",
+      "duration": 148,
+      "language": "EN"
+    },
+    {
+      "id": 2,
+      "title": "Interstellar",
+      "overview": "Un gruppo di astronauti attraversa un wormhole alla ricerca di una nuova casa per l'umanità.",
+      "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+      "releaseDate": "2014-11-07",
+      "voteAverage": 8.7,
+      "genre": "Fantascienza",
+      "duration": 169,
+      "language": "EN"
+    },
+    {
+      "id": 3,
+      "title": "The Dark Knight",
+      "overview": "Batman affronta il Joker, criminale deciso a portare il caos a Gotham.",
+      "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
+      "releaseDate": "2008-07-18",
+      "voteAverage": 9.0,
+      "genre": "Azione",
+      "duration": 152,
+      "language": "EN"
+    },
+    {
+      "id": 4,
+      "title": "Parasite",
+      "overview": "Due famiglie di classi sociali opposte finiscono coinvolte in una serie di eventi imprevedibili.",
+      "poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+      "releaseDate": "2019-05-30",
+      "voteAverage": 8.5,
+      "genre": "Thriller",
+      "duration": 132,
+      "language": "KO"
+    },
+    {
+      "id": 5,
+      "title": "The Matrix",
+      "overview": "Un hacker scopre la vera natura della realtà e il ruolo che deve ricoprire.",
+      "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/icmmSD4vTTDKOq2vvdulafOGw93.jpg",
+      "releaseDate": "1999-03-31",
+      "voteAverage": 8.7,
+      "genre": "Fantascienza",
+      "duration": 136,
+      "language": "EN"
+    }
+  ]
+}

@@ -1,1 +1,53 @@
-<p>movie-detail works!</p>
+@let selectedMovie = movie();
+
+@if (selectedMovie) {
+  <main class="py-5">
+    <div class="container">
+      <a routerLink="/catalogo" class="btn btn-outline-dark mb-4">
+        Torna al catalogo
+      </a>
+
+      <div class="row g-4 align-items-start">
+        <div class="col-md-4">
+          <img
+            [src]="selectedMovie.poster"
+            [alt]="selectedMovie.title"
+            class="img-fluid rounded shadow-sm">
+        </div>
+
+        <div class="col-md-8">
+          <h1 class="fw-bold mb-3">
+            {{ selectedMovie.title }}
+          </h1>
+
+          <p class="lead text-secondary">
+            {{ selectedMovie.overview }}
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-warning text-dark">
+              Voto {{ selectedMovie.voteAverage }}
+            </span>
+            <span class="badge bg-dark">
+              {{ selectedMovie.genre }}
+            </span>
+            <span class="badge bg-secondary">
+              {{ selectedMovie.language }}
+            </span>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-0">
+              <strong>Data uscita:</strong> {{ selectedMovie.releaseDate }}
+            </li>
+            <li class="list-group-item px-0">
+              <strong>Durata:</strong> {{ selectedMovie.duration }} min
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+} @else {
+  <p class="text-center py-5">Caricamento film...</p>
+}

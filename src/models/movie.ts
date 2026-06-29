@@ -1,8 +1,16 @@
 export interface Movie {
-  id: number;
+  id: number | string;
   title: string;
   overview: string;
-  poster_path: string;
-  release_date: string;
-  vote_average: number;
+  poster: string;
+  backdrop: string;
+  releaseDate: string;
+  voteAverage: number;
+  genre: string;
+  duration: number;
+  language: string;
+}
+
+export interface MoviesJson {
+  movies: Movie[];
 }
